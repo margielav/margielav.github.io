@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARGIELA // Official Bio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        /* Стилизация скроллбара под неоновый стиль */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050204; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(#ff0055, #b500ff); border-radius: 4px; }
+
+        /* Супер-яркий и насыщенный анимированный фон */
+        body { 
+            background-color: #030102; 
+            color: #ffe6eb; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            padding: 40px 20px; 
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(255, 0, 85, 0.32) 0%, transparent 55%),
+                radial-gradient(circle at 85% 85%, rgba(181, 0, 255, 0.32) 0%, transparent 55%),
+                radial-gradient(circle at 50% 50%, rgba(255, 0, 85, 0.12) 0%, transparent 65%);
+            background-size: 200% 200%;
+            animation: dynamic-bg 12s ease infinite;
+            background-attachment: fixed;
+            overflow-x: hidden; /* Предотвращаем горизонтальный скролл от частиц */
+        }
+
+        @keyframes dynamic-bg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Система летающих частиц */
+        .particle-system {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1; /* За контейнером */
+            overflow: hidden; /* Обрезаем частицы, выходящие за границы экрана */
+        }
+
+        .particle {
+            position: absolute;
+            background: linear-gradient(45deg, rgba(255, 0, 85, 0.6), rgba(181, 0, 255, 0.6));
+            border-radius: 50%;
+            opacity: 0;
+            filter: blur(2px); /* Мягкое размытие */
+            animation: particle-float 20s infinite ease-in-out;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.7);
+        }
+
+        .p1 { width: 40px; height: 40px; top: 10%; left: 5%; animation-delay: 0s; animation-duration: 20s; }
+        .p2 { width: 60px; height: 60px; top: 80%; left: 70%; animation-delay: 5s; animation-duration: 25s; }
+        .p3 { width: 30px; height: 30px; top: 30%; left: 90%; animation-delay: 10s; animation-duration: 18s; }
+        .p4 { width: 50px; height: 50px; top: 50%; left: 20%; animation-delay: 15s; animation-duration: 22s; }
+        .p5 { width: 45px; height: 45px; top: 60%; left: 10%; animation-delay: 2s; animation-duration: 23s; }
+        .p6 { width: 35px; height: 35px; top: 20%; left: 80%; animation-delay: 8s; animation-duration: 19s; }
+
+        @keyframes particle-float {
+            0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+            20% { transform: translate(10vw, -5vh) scale(0.8); opacity: 0.6; }
+            40% { transform: translate(20vw, 5vh) scale(1.0); opacity: 0.8; }
+            60% { transform: translate(30vw, -10vh) scale(0.9); opacity: 0.7; }
+            80% { transform: translate(40vw, 0vh) scale(0.6); opacity: 0.4; }
+            100% { transform: translate(50vw, 10vh) scale(0.3); opacity: 0; }
+        }
+
+        /* Премиальный ультра-стеклянный контейнер с неоновой границей */
+        .container { 
+            width: 100%; 
+            max-width: 480px; 
+            text-align: center; 
+            padding: 30px 25px 45px 25px; 
+            background: rgba(12, 4, 8, 0.88); 
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 0, 85, 0.4); 
+            border-radius: 32px; 
+            box-shadow: 0 0 60px rgba(255, 0, 85, 0.25), inset 0 0 25px rgba(255, 0, 85, 0.1); 
+        }
+
+        /* Верхняя шапка сайта (Header) */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 25px;
+        }
+        .header-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 85, 0.6));
+        }
+        
+        /* Светящаяся кнопка Telegram в шапке */
+        .tg-header-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #ff0055, #b500ff);
+            border: none;
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 800;
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .tg-header-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(255, 0, 85, 0.7);
+            filter: brightness(1.1);
+        }
+        .tg-header-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Переключатель языков */
+        .lang-selector {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 0, 85, 0.3);
+            border-radius: 30px;
+            padding: 5px;
+            margin-bottom: 35px;
+            gap: 4px;
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255, 230, 235, 0.5);
+            font-size: 12px;
+            font-weight: 800;
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+        }
+        .lang-btn:hover {
+            color: #fff;
+        }
+        .lang-btn.active {
+            background: linear-gradient(45deg, #ff0055, #b500ff);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.7);
+        }
+        
+        /* Аватар со светящимся градиентным бордером */
+        .avatar { 
+            width: 125px; 
+            height: 125px; 
+            border-radius: 28px; 
+            border: 2px solid #ff0055; 
+            margin: 0 auto 20px; 
+            display: block; 
+            object-fit: cover; 
+            box-shadow: 0 0 35px rgba(255, 0, 85, 0.65); 
+        }
+
+        /* Яркий градиентный заголовок */
+        h1 { 
+            font-size: 32px; 
+            font-weight: 900; 
+            letter-spacing: 2px; 
+            margin-bottom: 6px; 
+            background: linear-gradient(45deg, #ff0055, #ff5500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase; 
+        }
+
+        /* Кликабельный юзернейм */
+        .username { 
+            display: block; 
+            font-size: 17px; 
+            color: #ff3377; 
+            text-decoration: none; 
+            margin-bottom: 16px; 
+            font-weight: 800; 
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 12px rgba(255, 51, 119, 0.5);
+            transition: color 0.2s;
+        }
+        .username:hover {
+            color: #ff6699;
+        }
+
+        /* Статус плашка */
+        .status-bubble { 
+            display: inline-flex; 
+            align-items: center; 
+            padding: 8px 18px; 
+            background: rgba(255, 0, 85, 0.1); 
+            border: 1px solid rgba(255, 0, 85, 0.45); 
+            border-radius: 20px; 
+            margin-bottom: 35px; 
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.2);
+        }
+        .status-dot { 
+            width: 8px; 
+            height: 8px; 
+            background-color: #ff0055; 
+            border-radius: 50%; 
+            margin-right: 8px; 
+            box-shadow: 0 0 10px #ff0055; 
+            animation: pulse-dot 1.8s infinite;
+        }
+        .status-text { 
+            font-size: 13px; 
+            font-weight: 700; 
+            color: #ff3377; 
+            text-transform: lowercase; 
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes pulse-dot {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 85, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(255, 0, 85, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 85, 0); }
+        }
+
+        /* Крупная и яркая сетка статистики 2х2 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 35px;
+        }
+        .stats-card {
+            background: rgba(255, 0, 85, 0.03);
+            border: 2px solid rgba(255, 0, 85, 0.25);
+            padding: 18px 10px;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3), inset 0 0 10px rgba(255, 0, 85, 0.05);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .stats-card:hover {
+            border-color: #ff0055;
+            background: rgba(255, 0, 85, 0.08);
+            box-shadow: 0 0 25px rgba(255, 0, 85, 0.4);
+            transform: translateY(-3px);
+        }
+        .stats-num {
+            font-size: 24px;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff0055, #ff7700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 4px;
+            text-shadow: 0 0 10px rgba(255, 0, 85, 0.1);
+        }
+        .stats-label {
+            font-size: 11.5px;
+            color: #ffa6b6;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        /* Преимущества с красивой мягкой подсветкой */
+        .features-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 35px; text-align: left; }
+        .feature-item { 
+            display: flex; 
+            align-items: center; 
+            padding: 14px 18px; 
+            background: rgba(255, 0, 85, 0.02); 
+            border: 1px solid rgba(255, 0, 85, 0.15); 
+            border-radius: 14px; 
+            box-shadow: inset 0 0 10px rgba(255, 0, 85, 0.03);
+            transition: border-color 0.3s;
+        }
+        .feature-item:hover {
+            border-color: rgba(255, 0, 85, 0.4);
+        }
+        .red-dot { 
+            width: 8px; 
+            height: 8px; 
+            background-color: #ff0055; 
+            border-radius: 50%; 
+            margin-right: 14px; 
+            box-shadow: 0 0 12px #ff0055; 
+            flex-shrink: 0; 
+        }
+        .feature-text { font-size: 14px; font-weight: 600; color: #ffb3c1; }
+
+        /* Элегантная неоновая разделительная линия */
+        .neon-divider {
+            height: 1px;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 85, 0.5), rgba(181, 0, 255, 0.5), transparent);
+            margin: 40px 0;
+        }
+
+        /* Заголовки блоков */
+        .section-header { 
+            font-size: 13px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            color: #ff0055; 
+            margin-bottom: 20px; 
+            text-align: center; 
+            text-shadow: 0 0 12px rgba(255, 0, 85, 0.4);
+        }
+        .section-title { 
+            font-size: 22px; 
+            font-weight: 900; 
+            background: linear-gradient(45deg, #ff0055, #b500ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 22px; 
+            text-align: center; 
+            text-transform: uppercase; 
+        }
+
+        /* Кнопки ресурсов */
+        .links-group { display: flex; flex-direction: column; gap: 16px; }
+        
+        .link-card { 
+            display: flex; 
+            justify-content: space-between;
+            align-items: center; 
+            padding: 18px 22px; 
+            background: rgba(255, 0, 85, 0.03); 
+            border: 1px solid rgba(255, 0, 85, 0.3); 
+            border-radius: 16px; 
+            text-decoration: none; 
+            color: #ff3377; 
+            text-align: left;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .link-card:hover {
+            background: rgba(255, 0, 85, 0.08);
+            border-color: #ff0055;
+            box-shadow: 0 0 25px rgba(255, 0, 85, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .link-info { flex-grow: 1; }
+        .link-title { font-size: 17px; font-weight: 800; text-transform: uppercase; color: #ff1a66; }
+        .link-desc { font-size: 13px; color: #ffa6b6; margin-top: 2px; }
+        
+        .link-arrow {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff0055;
+            margin-left: 15px;
+            transition: transform 0.3s ease;
+            text-shadow: 0 0 8px rgba(255, 0, 85, 0.6);
+        }
+        .link-card:hover .link-arrow {
+            transform: translateX(6px);
+            color: #ff3377;
+        }
+
+        /* Гарантии */
+        .services-section { text-align: left; }
+        .service-card { 
+            background: rgba(255, 255, 255, 0.01); 
+            border: 1px solid rgba(255, 0, 85, 0.18); 
+            border-radius: 16px; 
+            padding: 20px; 
+            margin-bottom: 16px; 
+            transition: border-color 0.3s;
+        }
+        .service-card:hover {
+            border-color: rgba(255, 0, 85, 0.45);
+        }
+        .service-title { font-size: 16px; font-weight: 700; color: #ff3377; margin-bottom: 8px; text-transform: uppercase; }
+        .service-desc { font-size: 13.5px; color: #ffb3c1; line-height: 1.4; }
+
+        /* Шаги сделки */
+        .steps-section { text-align: left; }
+        .step-card { 
+            background: rgba(255, 255, 255, 0.01); 
+            border: 1px solid rgba(255, 0, 85, 0.18); 
+            border-radius: 18px; 
+            padding: 22px; 
+            margin-bottom: 18px; 
+            transition: border-color 0.3s;
+        }
+        .step-card:hover {
+            border-color: rgba(255, 0, 85, 0.45);
+        }
+        
+        .step-num { 
+            font-size: 26px; 
+            font-weight: 900; 
+            background: linear-gradient(45deg, #ff0055, #b500ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px; 
+        }
+
+        /* Стили для блока «Требуется помощь?» */
+        .escrow-section { text-align: left; }
+        .escrow-card {
+            background: rgba(255, 0, 85, 0.03); 
+            border: 1.5px solid rgba(255, 0, 85, 0.35); 
+            border-radius: 20px; 
+            padding: 25px; 
+            box-shadow: 0 4px 25px rgba(255, 0, 85, 0.1);
+        }
+        .escrow-title {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff0055, #b500ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .escrow-desc {
+            font-size: 14px;
+            color: #ffa6b6;
+            line-height: 1.5;
+            margin-bottom: 22px;
+        }
+        .escrow-desc a {
+            color: #ff3377;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        /* Светящаяся яркая кнопка с пульсирующим эффектом наведения */
+        .escrow-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(45deg, #ff0055, #ff5500);
+            border: none;
+            border-radius: 14px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 800;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 20px rgba(255, 0, 85, 0.5);
+        }
+        .escrow-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 35px rgba(255, 0, 85, 0.8);
+            filter: brightness(1.15);
+        }
+        .escrow-btn svg {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+        
+        footer { font-size: 11px; color: #aa2c55; letter-spacing: 1px; margin-top: 30px; font-weight: 600; text-align: center; }
+
+        /* Стили для блока "Мои реквизиты" */
+        .wallet-section {
+            text-align: left;
+            margin-bottom: 35px;
+        }
+        .wallet-section .section-title {
+            margin-bottom: 15px; /* Уменьшаем отступ до кнопки */
+        }
+        .toggle-btn {
+            background: rgba(255, 0, 85, 0.05);
+            border: 1px solid rgba(255, 0, 85, 0.3);
+            border-radius: 12px;
+            padding: 12px 20px;
+            color: #ff3377;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            margin-bottom: 20px; /* Отступ до выпадающего списка */
+        }
+        .toggle-btn:hover {
+            background: rgba(255, 0, 85, 0.1);
+            border-color: #ff0055;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.2);
+            transform: translateY(-2px);
+        }
+        .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 18px;
+            line-height: 1;
+        }
+        .toggle-btn.active .toggle-arrow {
+            transform: rotate(180deg);
+        }
+
+        .wallet-list-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-out; /* Плавное открытие/закрытие */
+        }
+        .wallet-list-container.open {
+            max-height: 500px; /* Должно быть больше, чем суммарная высота всех кошельков */
+        }
+        .wallet-card {
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(255, 0, 85, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+            text-align: left;
+            box-shadow: inset 0 0 8px rgba(255, 0, 85, 0.02);
+        }
+        .wallet-type {
+            font-size: 13px;
+            font-weight: 800;
+            color: #ff1a66;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .wallet-address {
+            font-size: 12px;
+            color: #ffb3c1;
+            word-break: break-all;
+            margin-bottom: 10px;
+        }
+        .copy-wallet-btn {
+            background: rgba(255, 0, 85, 0.08);
+            border: 1px solid rgba(255, 0, 85, 0.3);
+            border-radius: 8px;
+            padding: 6px 12px;
+            color: #ff3377;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .copy-wallet-btn:hover {
+            background: rgba(255, 0, 85, 0.18);
+            border-color: #ff0055;
+            box-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+        }
+
+        /* Умное неоновое всплывающее уведомление (Toast) */
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: rgba(10, 4, 6, 0.96);
+            border: 1px solid #ff0055;
+            box-shadow: 0 0 25px rgba(255, 0, 85, 0.5);
+            border-radius: 16px;
+            padding: 14px 20px;
+            color: #ffe6eb;
+            font-size: 13px;
+            font-weight: 700;
+            z-index: 9999;
+            pointer-events: none;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: calc(100% - 40px);
+            max-width: 400px;
+            text-align: left;
+        }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+        .toast-icon {
+            color: #ff0055;
+            flex-shrink: 0;
+        }
+
+        /* Секция с памяткой безопасности */
+        .security-section {
+            text-align: left;
+            margin-bottom: 35px;
+        }
+        .security-tips-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .security-tips-list .feature-item { /* Переиспользуем стиль feature-item */
+            padding: 14px 18px;
+            background: rgba(255, 0, 85, 0.02);
+            border: 1px solid rgba(255, 0, 85, 0.15);
+            border-radius: 14px;
+            box-shadow: inset 0 0 10px rgba(255, 0, 85, 0.03);
+            transition: border-color 0.3s;
+        }
+        .security-tips-list .feature-item:hover {
+            border-color: rgba(255, 0, 85, 0.4);
+        }
+        .security-tips-list .feature-text {
+            font-size: 13.5px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Система летающих частиц -->
+    <div class="particle-system">
+        <div class="particle p1"></div>
+        <div class="particle p2"></div>
+        <div class="particle p3"></div>
+        <div class="particle p4"></div>
+        <div class="particle p5"></div>
+        <div class="particle p6"></div>
+    </div>
+
+    <!-- Всплывающий Тост -->
+    <div class="toast" id="toast">
+        <svg class="toast-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="m9 11 2 2 4-4"></path>
+        </svg>
+        <span id="toast-text" data-i18n="toast_copied">Скопировано в буфер обмена!</span>
+    </div>
+
+    <div class="container">
+        
+        <!-- Шапка сайта (Header) -->
+        <div class="header">
+            <!-- Левая часть: логотип-щит -->
+            <div class="header-logo">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="url(#brand-grad)" />
+                    <path d="M9 11l2 2 4-4" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <defs>
+                        <linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff0055" />
+                            <stop offset="100%" stop-color="#b500ff" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            
+            <!-- Правая часть: кнопка Telegram -->
+            <a href="https://t.me/margielav" target="_blank" class="tg-header-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.2-.02-.08.02-1.3 1.02-3.67 2.63-.35.24-.66.36-.94.35-.31-.01-.9-.18-1.34-.32-.54-.18-.97-.27-.93-.57.02-.16.24-.32.66-.49 2.58-1.12 4.31-1.86 5.17-2.21 2.46-.99 2.97-1.16 3.31-1.16.07 0 .24.02.35.11.09.07.12.17.13.25 0 .04.01.12 0 .18z"/>
+                </svg>
+                Telegram
+            </a>
+        </div>
+        
+        <!-- Языковая панель -->
+        <div class="lang-selector">
+            <button class="lang-btn active" data-lang="ru">RU</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="ua">UA</button>
+            <button class="lang-btn" data-lang="cn">CN</button>
+        </div>
+
+        <img src="avatar.jpg" class="avatar" alt="Margiela">
+        <h1>MARGIELA</h1>
+        <a href="https://t.me/margielav" target="_blank" class="username">@margielav</a>
+
+        <div class="status-bubble">
+            <div class="status-dot"></div>
+            <div class="status-text" data-i18n="status_text">available for deals</div>
+        </div>
+
+        <!-- Крупная и яркая сетка статистики 2х2 -->
+        <div class="stats-grid">
+            <div class="stats-card">
+                <div class="stats-num">3000+</div>
+                <div class="stats-label" data-i18n="stats_deals">Сделок</div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-num">1500+</div>
+                <div class="stats-label" data-i18n="stats_reviews">Отзывов</div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-num">~5 мин</div>
+                <div class="stats-label" data-i18n="stats_speed">Скорость</div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-num">2%</div>
+                <div class="stats-label" data-i18n="stats_commission">Комиссия</div>
+            </div>
+        </div>
+
+        <div class="features-list">
+            <div class="feature-item"><div class="red-dot"></div><div class="feature-text" data-i18n="feature_1">Безопасные сделки</div></div>
+            <div class="feature-item"><div class="red-dot"></div><div class="feature-text" data-i18n="feature_2">Быстрые транзакции</div></div>
+            <div class="feature-item"><div class="red-dot"></div><div class="feature-text" data-i18n="feature_3">Множество довольных клиентов</div></div>
+            <div class="feature-item"><div class="red-dot"></div><div class="feature-text" data-i18n="feature_4">Большой опыт работы</div></div>
+            <div class="feature-item"><div class="red-dot"></div><div class="feature-text" data-i18n="feature_5">Тысячи подтвержденных отзывов</div></div>
+        </div>
+
+        <div class="neon-divider"></div>
+
+        <!-- Секция "Мои реквизиты" (кошельки) -->
+        <div class="wallet-section">
+            <div class="section-title" data-i18n="wallet_section_title">Мои реквизиты</div>
+            <button class="toggle-btn" id="walletToggle">
+                <span data-i18n="wallet_toggle_btn_show">Показать реквизиты</span>
+                <span class="toggle-arrow">↓</span>
+            </button>
+            <div class="wallet-list-container" id="walletListContainer">
+                <div class="wallet-card">
+                    <div class="wallet-type">TON</div>
+                    <div class="wallet-address" data-address="UQDtODH_H-5DbdrQRThvyg742wabru1Dkl3ir0wvtsNsDAMd">UQDtODH_H-5DbdrQRThvyg742wabru1Dkl3ir0wvtsNsDAMd</div>
+                    <button class="copy-wallet-btn" data-i18n="copy_wallet_btn_text">Скопировать</button>
+                </div>
+                <div class="wallet-card">
+                    <div class="wallet-type">TRC20</div>
+                    <div class="wallet-address" data-address="THcmMa2H96k4zL85gbfmK4R2eoF5tAW3zP">THcmMa2H96k4zL85gbfmK4R2eoF5tAW3zP</div>
+                    <button class="copy-wallet-btn" data-i18n="copy_wallet_btn_text">Скопировать</button>
+                </div>
+                <div class="wallet-card">
+                    <div class="wallet-type">Биткоин (BTC)</div>
+                    <div class="wallet-address" data-address="bc1qnaa380a97qedq2c2qvy9w07ualsut52z62ex3x">bc1qnaa380a97qedq2c2qvy9w07ualsut52z62ex3x</div>
+                    <button class="copy-wallet-btn" data-i18n="copy_wallet_btn_text">Скопировать</button>
+                </div>
+                <div class="wallet-card">
+                    <div class="wallet-type">Solana (SOL)</div>
+                    <div class="wallet-address" data-address="3M4nnLQftZ5yCAyL92Hcs3PR4EFen2fjwk51jivCk4tY">3M4nnLQftZ5yCAyL92Hcs3PR4EFen2fjwk51jivCk4tY</div>
+                    <button class="copy-wallet-btn" data-i18n="copy_wallet_btn_text">Скопировать</button>
+                </div>
+                <div class="wallet-card">
+                    <div class="wallet-type">Эфир (ETH)</div>
+                    <div class="wallet-address" data-address="0x5B11F8E134844b2058C0822432789b3d65daeB48">0x5B11F8E134844b2058C0822432789b3d65daeB48</div>
+                    <button class="copy-wallet-btn" data-i18n="copy_wallet_btn_text">Скопировать</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="neon-divider"></div>
+
+        <!-- Секция "Памятка безопасности" -->
+        <div class="security-section">
+            <div class="section-title" data-i18n="security_memo_title">Памятка безопасности</div>
+            <div class="security-tips-list">
+                <div class="feature-item">
+                    <div class="red-dot"></div>
+                    <div class="feature-text" data-i18n="security_tip_1">Всегда сверяйте юзернейм с официальным сайтом.</div>
+                </div>
+                <div class="feature-item">
+                    <div class="red-dot"></div>
+                    <div class="feature-text" data-i18n="security_tip_2">Я никогда не пишу первым. Только вы обращаетесь ко мне.</div>
+                </div>
+                <div class="feature-item">
+                    <div class="red-dot"></div>
+                    <div class="feature-text" data-i18n="security_tip_3">Сделка проводится только в созданной мной групповой беседе.</div>
+                </div>
+                <div class="feature-item">
+                    <div class="red-dot"></div>
+                    <div class="feature-text" data-i18n="security_tip_4">Не доверяйте скриншотам и поддельным отзывам.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="neon-divider"></div>
+
+        <div class="section-header" data-i18n="resources_title">Все мои ресурсы</div>
+        <div class="links-group">
+            <a href="https://t.me/InfMargiela" target="_blank" class="link-card">
+                <div class="link-info">
+                    <div class="link-title" data-i18n="info_title">Информация</div>
+                    <div class="link-desc" data-i18n="info_desc">Вся основная информация обо мне</div>
+                </div>
+                <div class="link-arrow">→</div>
+            </a>
+            <a href="https://t.me/MinterNews" target="_blank" class="link-card">
+                <div class="link-info">
+                    <div class="link-title">MINT NEWS</div>
+                    <div class="link-desc" data-i18n="mint_desc">Мой новостной NFT канал</div>
+                </div>
+                <div class="link-arrow">→</div>
+            </a>
+            <a href="https://t.me/MargielaOtz" target="_blank" class="link-card">
+                <div class="link-info">
+                    <div class="link-title" data-i18n="reviews_title">Отзывы</div>
+                    <div class="link-desc" data-i18n="reviews_desc">Письменные отзывы клиентов</div>
+                </div>
+                <div class="link-arrow">→</div>
+            </a>
+            <a href="https://t.me/ReviewsMargiela" target="_blank" class="link-card">
+                <div class="link-info">
+                    <div class="link-title" data-i18n="reviews_1500_title">Отзывы 1500+</div>
+                    <div class="link-desc" data-i18n="reviews_1500_desc">База подтвержденных отзывов</div>
+                </div>
+                <div class="link-arrow">→</div>
+            </a>
+        </div>
+
+        <div class="neon-divider"></div>
+
+        <div class="services-section">
+            <div class="section-title" data-i18n="guarantees_title">Что я гарантирую</div>
+            <div class="service-card">
+                <div class="service-title" data-i18n="g1_title">Подтверждение условий</div>
+                <div class="service-desc" data-i18n="g1_desc">Активы, цена, сеть, кошельки, комиссия и порядок действий.</div>
+            </div>
+            <div class="service-card">
+                <div class="service-title" data-i18n="g2_title">Контроль перевода</div>
+                <div class="service-desc" data-i18n="g2_desc">Я проверяю, что стороны отправляют именно то, что согласовали.</div>
+            </div>
+            <div class="service-card">
+                <div class="service-title" data-i18n="g3_title">Завершение сделки</div>
+                <div class="service-desc" data-i18n="g3_desc">Сделка закрывается только после подтверждения обеих сторон.</div>
+            </div>
+        </div>
+
+        <div class="neon-divider"></div>
+
+        <div class="steps-section">
+            <div class="section-title" data-i18n="steps_title">Как проходит сделка</div>
+            
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <div class="service-title" data-i18n="s1_title">Связь в Telegram</div>
+                <div class="service-desc" data-i18n="s1_desc">Отправьте детали сделки: актив, сумму, сеть проведения операции и контакты второй стороны сделки.</div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <div class="service-title" data-i18n="s2_title">Согласование условий</div>
+                <div class="service-desc" data-i18n="s2_desc">Мы детально подтверждаем порядок перевода активов, размер комиссии и то, что именно передает каждая из сторон.</div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <div class="service-title" data-i18n="s3_title">Проведение перевода</div>
+                <div class="service-desc" data-i18n="s3_desc">Обе стороны сделки пошагово следуют согласованной инструкции и строго выполняют регламент обмена.</div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-num">04</div>
+                <div class="service-title" data-i18n="s4_title">Завершение сделки</div>
+                <div class="service-desc" data-i18n="s4_desc">После взаимных подтверждений сторон сделка успешно закрывается. Любые разногласия оперативно решаются гарантом до выплаты.</div>
+            </div>
+        </div>
+
+        <div class="neon-divider"></div>
+
+        <!-- Блок «Требуется помощь?» -->
+        <div class="escrow-section">
+            <div class="escrow-card">
+                <div class="escrow-title" data-i18n="escrow_title">Требуется помощь?</div>
+                <div class="escrow-desc" data-i18n="escrow_desc">Напишите <a href="https://t.me/margielav" target="_blank">@margielav</a> и отправьте детали сделки. Я отвечу с дальнейшими шагами.</div>
+                <a href="https://t.me/margielav" target="_blank" class="escrow-btn">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.2-.02-.08.02-1.3 1.02-3.67 2.63-.35.24-.66.36-.94.35-.31-.01-.9-.18-1.34-.32-.54-.18-.97-.27-.93-.57.02-.16.24-.32.66-.49 2.58-1.12 4.31-1.86 5.17-2.21 2.46-.99 2.97-1.16 3.31-1.16.07 0 .24.02.35.11.09.07.12.17.13.25 0 .04.01.12 0 .18z" fill="currentColor"/>
+                    </svg>
+                    <span data-i18n="escrow_btn">Открыть Telegram</span>
+                </a>
+            </div>
+        </div>
+
+        <footer>&copy; 2026 MARGIELA. ALL RIGHTS RESERVED.</footer>
+    </div>
+
+    <!-- JavaScript переводчик -->
+    <script>
+        const translations = {
+            ru: {
+                status_text: "available for deals",
+                stats_deals: "Сделок",
+                stats_reviews: "Отзывов",
+                stats_speed: "Скорость",
+                stats_commission: "Комиссия",
+                feature_1: "Безопасные сделки",
+                feature_2: "Быстрые транзакции",
+                feature_3: "Множество довольных клиентов",
+                feature_4: "Большой опыт работы",
+                feature_5: "Тысячи подтвержденных отзывов",
+                wallet_section_title: "Мои реквизиты",
+                wallet_toggle_btn_show: "Показать реквизиты",
+                wallet_toggle_btn_hide: "Скрыть реквизиты",
+                copy_wallet_btn_text: "Скопировать",
+                security_memo_title: "Памятка безопасности",
+                security_tip_1: "Всегда сверяйте юзернейм с официальным сайтом.",
+                security_tip_2: "Я никогда не пишу первым. Только вы обращаетесь ко мне.",
+                security_tip_3: "Сделка проводится только в созданной мной групповой беседе.",
+                security_tip_4: "Не доверяйте скриншотам и поддельным отзывам.",
+                resources_title: "Все мои ресурсы",
+                info_title: "Информация",
+                info_desc: "Вся основная информация обо мне",
+                mint_desc: "Мой новостной NFT канал",
+                reviews_title: "Отзывы",
+                reviews_desc: "Письменные отзывы клиентов",
+                reviews_1500_title: "Отзывы 1500+",
+                reviews_1500_desc: "База подтвержденных отзывов",
+                guarantees_title: "Что я гарантирую",
+                g1_title: "Подтверждение условий",
+                g1_desc: "Активы, цена, сеть, кошельки, комиссия и порядок действий.",
+                g2_title: "Контроль перевода",
+                g2_desc: "Я проверяю, что стороны отправляют именно то, что согласовали.",
+                g3_title: "Завершение сделки",
+                g3_desc: "Сделка закрывается только после подтверждения обеих сторон.",
+                steps_title: "Как проходит сделка",
+                s1_title: "Связь в Telegram",
+                s1_desc: "Отправьте детали сделки: актив, сумму, сеть проведения операции и контакты второй стороны сделки.",
+                s2_title: "Согласование условий",
+                s2_desc: "Мы детально подтверждаем порядок перевода активов, размер комиссии и то, что именно передает каждая из сторон.",
+                s3_title: "Проведение перевода",
+                s3_desc: "Обе стороны сделки пошагово следуют согласованной инструкции и строго выполняют регламент обмена.",
+                s4_title: "Завершение сделки",
+                s4_desc: "После взаимных подтверждений сторон сделка успешно закрывается. Любые разногласия оперативно решаются гарантом до выплаты.",
+                escrow_title: "Требуется помощь?",
+                escrow_desc: 'Напишите <a href="https://t.me/margielav" target="_blank">@margielav</a> и отправьте детали сделки. Я отвечу с дальнейшими шагами.',
+                escrow_btn: "Открыть Telegram",
+                toast_copied: "Скопировано в буфер обмена!"
+            },
+            en: {
+                status_text: "available for deals",
+                stats_deals: "Deals",
+                stats_reviews: "Reviews",
+                stats_speed: "Speed",
+                stats_commission: "Commission",
+                feature_1: "Secure deals",
+                feature_2: "Fast transactions",
+                feature_3: "Many satisfied clients",
+                feature_4: "Extensive experience",
+                feature_5: "Thousands of verified reviews",
+                wallet_section_title: "My Details",
+                wallet_toggle_btn_show: "Show Details",
+                wallet_toggle_btn_hide: "Hide Details",
+                copy_wallet_btn_text: "Copy",
+                security_memo_title: "Security Memo",
+                security_tip_1: "Always verify the username with the official website.",
+                security_tip_2: "I never write first. You always initiate contact.",
+                security_tip_3: "Deals are conducted only in a group chat created by me.",
+                security_tip_4: "Don't trust screenshots and fake reviews.",
+                resources_title: "All my resources",
+                info_title: "Information",
+                info_desc: "All essential information about me",
+                mint_desc: "My NFT news channel",
+                reviews_title: "Reviews",
+                reviews_desc: "Written client reviews",
+                reviews_1500_title: "Reviews 1500+",
+                reviews_1500_desc: "Database of verified reviews",
+                guarantees_title: "What I guarantee",
+                g1_title: "Terms confirmation",
+                g1_desc: "Assets, price, network, wallets, commission, and procedure.",
+                g2_title: "Transfer control",
+                g2_desc: "I verify that both parties send exactly what was agreed upon.",
+                g3_title: "Deal completion",
+                g3_desc: "The deal is closed only after confirmation from both parties.",
+                steps_title: "How the deal works",
+                s1_title: "Contact on Telegram",
+                s1_desc: "Send deal details: asset, amount, network, and the second party's contact info.",
+                s2_title: "Agreement on terms",
+                s2_desc: "We confirm details of asset transfer, commission size, and exactly what each party sends.",
+                s3_title: "Transfer execution",
+                s3_desc: "Both parties follow step-by-step instructions and strictly adhere to the exchange rules.",
+                s4_title: "Deal closure",
+                s4_desc: "After mutual confirmations, the deal closes successfully. Any disputes are resolved by the guarantor before payout.",
+                escrow_title: "Need help?",
+                escrow_desc: 'Contact <a href="https://t.me/margielav" target="_blank">@margielav</a> and send deal details. I\'ll reply with the next steps.',
+                escrow_btn: "Open Telegram",
+                toast_copied: "Copied to clipboard!"
+            },
+            ua: {
+                status_text: "available for deals",
+                stats_deals: "Угод",
+                stats_reviews: "Відгуків",
+                stats_speed: "Швидкість",
+                stats_commission: "Комісія",
+                feature_1: "Безпечні угоди",
+                feature_2: "Швидкі транзакції",
+                feature_3: "Безліч задоволених клієнтів",
+                feature_4: "Великий досвід роботи",
+                feature_5: "Тисячі підтверджених відгуків",
+                wallet_section_title: "Мої реквізити",
+                wallet_toggle_btn_show: "Показати реквізити",
+                wallet_toggle_btn_hide: "Приховати реквізити",
+                copy_wallet_btn_text: "Скопіювати",
+                security_memo_title: "Пам'ятка безпеки",
+                security_tip_1: "Завжди звіряйте юзернейм з офіційним сайтом.",
+                security_tip_2: "Я ніколи не пишу першим. Тільки ви звертаєтеся до мене.",
+                security_tip_3: "Угода проводиться тільки в створеній мною груповій бесіді.",
+                security_tip_4: "Не довіряйте скріншотам і підробленим відгукам.",
+                resources_title: "Всі мої ресурси",
+                info_title: "Інформація",
+                info_desc: "Вся основна інформація про мене",
+                mint_desc: "Мій новинний NFT канал",
+                reviews_title: "Відгуки",
+                reviews_desc: "Письмові відгуки клієнтів",
+                reviews_1500_title: "Відгуки 1500+",
+                reviews_1500_desc: "База підтверджених відгуків",
+                guarantees_title: "Що я гарантую",
+                g1_title: "Підтвердження умов",
+                g1_desc: "Активи, ціна, мережа, гаманці, комісія та порядок дій.",
+                g2_title: "Контроль переказу",
+                g2_desc: "Я перевіряю, що сторони надсилають саме те, про що домовилися.",
+                g3_title: "Завершення угоди",
+                g3_desc: "Угода закривається лише після підтвердження обох сторін.",
+                steps_title: "Як проходить угода",
+                s1_title: "Зв'язок у Telegram",
+                s1_desc: "Надішліть деталі угоди: актив, суму, мережу проведення операції та контакти другої сторони.",
+                s2_title: "Узгодження умов",
+                s2_desc: "Ми детально підтверджуємо порядок переказу активів, розмір комісії та те, що саме передає кожна зі сторін.",
+                s3_title: "Проведення переказу",
+                s3_desc: "Обидві сторони угоди покроково дотримуються узгодженої інструкції та регламенту обміну.",
+                s4_title: "Завершення угоди",
+                s4_desc: "Після взаємних підтверджень сторін угода успішно закривається. Будь-які розбіжності оперативно вирішуються гарантом до виплати.",
+                escrow_title: "Потрібна допомога?",
+                escrow_desc: 'Напишіть <a href="https://t.me/margielav" target="_blank">@margielav</a> і надішліть деталі угоди. Я відповім з подальшими кроками.',
+                escrow_btn: "Відкрити Telegram",
+                toast_copied: "Скопійовано в буфер обміну!"
+            },
+            cn: {
+                status_text: "available for deals",
+                stats_deals: "交易笔数",
+                stats_reviews: "客户评价",
+                stats_speed: "交易速度",
+                stats_commission: "手续费",
+                feature_1: "安全交易",
+                feature_2: "快速交易",
+                feature_3: "众多满意客户",
+                feature_4: "丰富的行业经验",
+                feature_5: "数千条真实好评",
+                wallet_section_title: "我的收款信息",
+                wallet_toggle_btn_show: "显示收款信息",
+                wallet_toggle_btn_hide: "隐藏收款信息",
+                copy_wallet_btn_text: "复制",
+                security_memo_title: "安全备忘录",
+                security_tip_1: "务必将用户名与官方网站进行核对。",
+                security_tip_2: "我从不主动联系您。请您主动与我联系。",
+                security_tip_3: "所有交易只在我创建的群聊中进行。",
+                security_tip_4: "请勿相信截图和虚假评论。",
+                resources_title: "我的所有频道",
+                info_title: "个人信息",
+                info_desc: "关于我的所有基础信息",
+                mint_desc: "我的NFT新闻频道",
+                reviews_title: "客户评价",
+                reviews_desc: "客户文字评价",
+                reviews_1500_title: "1500+ 好评",
+                reviews_1500_desc: "经证实的交易评价库",
+                guarantees_title: "我的服务承诺",
+                g1_title: "条款确认",
+                g1_desc: "资产、价格、网络、钱包、手续费及具体流程。",
+                g2_title: "交易监控",
+                g2_desc: "我将严格核对双方发送的资产是否与约定完全一致。",
+                g3_title: "交易完成",
+                g3_desc: "只有在双方均确认无误后，交易才会正式关闭。",
+                steps_title: "交易流程说明",
+                s1_title: "联系 Telegram",
+                s1_desc: "发送交易详情：资产种类、金额、所用网络以及交易另一方的联系方式。",
+                s2_title: "协商具体条款",
+                s2_desc: "我们将详细确认资产划转流程、手续费比例以及各方具体需要支付的内容。",
+                s3_title: "执行资产划转",
+                s3_desc: "交易双方将根据协商好的指南，分步骤严格执行兑换规则。",
+                s4_title: "交易顺利结束",
+                s4_desc: "双方确认无误后，交易顺利完成。任何纠纷将在担保人放款前迅速予以解决。",
+                escrow_title: "需要帮助吗？",
+                escrow_desc: '联系 <a href="https://t.me/margielav" target="_blank">@margielav</a> 并附上交易细节。我会告知您接下来的步骤。',
+                escrow_btn: "打开 Telegram",
+                toast_copied: "已复制到剪贴板！"
+            }
+        };
+
+        let currentLang = 'ru'; // Текущий выбранный язык по умолчанию
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const translatableElements = document.querySelectorAll('[data-i18n]');
+        const walletToggleBtn = document.getElementById('walletToggle');
+        const walletListContainer = document.getElementById('walletListContainer');
+        const toast = document.getElementById('toast');
+        const toastText = document.getElementById('toast-text');
+
+        // Функция для обновления всех текстов на странице
+        function updateTranslations() {
+            translatableElements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLang] && translations[currentLang][key]) {
+                    element.innerHTML = translations[currentLang][key];
+                }
+            });
+            // Обновляем текст кнопки переключения реквизитов
+            walletToggleBtn.querySelector('span:first-child').innerHTML = walletListContainer.classList.contains('open') ? translations[currentLang].wallet_toggle_btn_hide : translations[currentLang].wallet_toggle_btn_show;
+        }
+
+        // Обработка переключения языков
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.getAttribute('data-lang');
+                currentLang = lang;
+                
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                updateTranslations(); // Обновляем тексты
+            });
+        });
+
+        // Логика переключения блока кошельков
+        walletToggleBtn.addEventListener('click', () => {
+            walletListContainer.classList.toggle('open');
+            walletToggleBtn.classList.toggle('active'); // Активируем кнопку для поворота стрелки
+
+            // Обновляем текст кнопки в зависимости от состояния
+            walletToggleBtn.querySelector('span:first-child').innerHTML = walletListContainer.classList.contains('open') ? translations[currentLang].wallet_toggle_btn_hide : translations[currentLang].wallet_toggle_btn_show;
+        });
+
+        // Логика копирования кошельков
+        document.querySelectorAll('.copy-wallet-btn').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const address = event.target.closest('.wallet-card').querySelector('.wallet-address').getAttribute('data-address');
+                navigator.clipboard.writeText(address).then(() => {
+                    toastText.innerHTML = translations[currentLang].toast_copied;
+                    toast.classList.add('show');
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 3000);
+                }).catch(err => {
+                    console.error('Ошибка копирования: ', err);
+                });
+            });
+        });
+
+        // Инициализация переводов при загрузке страницы
+        updateTranslations();
+    </script>
+</body>
+</html>
